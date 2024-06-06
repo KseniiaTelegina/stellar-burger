@@ -13,7 +13,7 @@ type AuthState = {
 
 const initialState: AuthState = {
   isAuthChecked: false,
-  user: null,
+  user: null
 };
 
 const authSlice = createSlice({
@@ -25,8 +25,8 @@ const authSlice = createSlice({
     },
     setUser(state, action: PayloadAction<User | null>) {
       state.user = action.payload;
-    },
-  },
+    }
+  }
 });
 
 export const { setAuthChecked, setUser } = authSlice.actions;

@@ -12,7 +12,7 @@ const rootReducer = {
   auth: authReducer // Включаем authReducer в корневой редуктор
 };
 
-const store = configureStore({
+export const store = configureStore({
   reducer: rootReducer,
   devTools: process.env.NODE_ENV !== 'production'
 });

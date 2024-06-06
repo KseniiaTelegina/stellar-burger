@@ -1,4 +1,4 @@
-// import { useSelector } from 'src/services/store'; 
+// import { useSelector } from 'src/services/store';
 // import { isAuthCheckedSelector, userDataSelector } from '../services/store/selectors'; //вот с этим вопросики!!!!
 // import { Navigate, useLocation } from 'react-router';
 // import { Preloader } from '../ui/preloader';
@@ -32,12 +32,9 @@
 
 //     return children ;
 // }
-import { useSelector } from 'src/services/store'; 
-import {
-    isAuthCheckedSelector,
-    userDataSelector
-} from '@selectors'; 
-import { Navigate, useLocation } from 'react-router-dom'; 
+import { useSelector } from 'react-redux';
+import { isAuthCheckedSelector, userDataSelector } from '@selectors';
+import { Navigate, useLocation } from 'react-router-dom';
 import { Preloader } from '../ui/preloader';
 
 type ProtectedRouteProps = {
@@ -45,7 +42,10 @@ type ProtectedRouteProps = {
   children: React.ReactElement;
 };
 
-export const ProtectedRoute = ({ onlyUnAuth, children }: ProtectedRouteProps) => {
+export const ProtectedRoute = ({
+  onlyUnAuth,
+  children
+}: ProtectedRouteProps) => {
   const isAuthChecked = useSelector(isAuthCheckedSelector); // Проверка состояния авторизации пользователя
   const user = useSelector(userDataSelector); // Получение данных пользователя из состояния
   const location = useLocation();
