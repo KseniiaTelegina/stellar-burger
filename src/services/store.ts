@@ -5,11 +5,13 @@ import {
   useSelector as selectorHook
 } from 'react-redux';
 import authReducer from './authSlice';
+import { ingredientsSlice } from './IngredientsSlice';
 
 // const rootReducer = () => {}; // Заменить на импорт настоящего редьюсера
 
 export const rootReducer = {
-  auth: authReducer // Включаем authReducer в корневой редуктор
+  auth: authReducer,
+  [ingredientsSlice.name]: ingredientsSlice.reducer
 };
 
 export const store = configureStore({
