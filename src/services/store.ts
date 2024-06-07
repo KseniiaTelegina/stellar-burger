@@ -8,7 +8,7 @@ import authReducer from './authSlice';
 
 // const rootReducer = () => {}; // Заменить на импорт настоящего редьюсера
 
-const rootReducer = {
+export const rootReducer = {
   auth: authReducer // Включаем authReducer в корневой редуктор
 };
 

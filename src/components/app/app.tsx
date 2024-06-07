@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ConstructorPage } from '@pages';
 import { Feed } from '@pages';
@@ -22,14 +22,23 @@ import { Modal } from '@components';
 import { OrderInfo } from '@components';
 import { IngredientDetails } from '@components';
 import { ProtectedRoute } from '../protected-route/ProtectedRoute';
+import { useDispatch } from '../../services/store';
+import { setAuthChecked } from '../../services/authSlice';
+import { getIngredients } from '../../services/IngredientsSlice';
 
 const App = () => {
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundLocation;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleModalClose = () => {
     navigate(-1);
   };
+
+  useEffect(() => {
+    dispatch(getIngredients());
+    dispatch(setAuthChecked());
+  }, []);
 
   return (
     // <Router>
@@ -74,7 +83,7 @@ const App = () => {
         <Route
           path='/profile'
           element={
-            <ProtectedRoute onlyUnAuth>
+            <ProtectedRoute>
               <Profile />
             </ProtectedRoute>
           }
@@ -82,7 +91,7 @@ const App = () => {
         <Route
           path='/profile/orders'
           element={
-            <ProtectedRoute onlyUnAuth>
+            <ProtectedRoute>
               <ProfileOrders />
             </ProtectedRoute>
           }
