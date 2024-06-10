@@ -3,12 +3,12 @@ import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
 import { useSelector } from '../../services/store';
 import { RootState } from '../../services/store';
-// import { useNavigate } from 'react-router-dom';
 
 export const BurgerConstructor: FC = () => {
-  // const navigate = useNavigate();
+
   const constructorItems = useSelector(
     (state: RootState) => state.order.constructorItems
+    
   );
   const orderRequest = useSelector(
     (state: RootState) => state.order.orderRequest
@@ -32,10 +32,6 @@ export const BurgerConstructor: FC = () => {
     [constructorItems]
   );
 
-  // const onIngredientClick = (id: string) => {
-  //   navigate(`/ingredients/${id}`, { state: { backgroundLocation: location } });
-  // };
-
   return (
     <BurgerConstructorUI
       price={price}
@@ -44,7 +40,6 @@ export const BurgerConstructor: FC = () => {
       orderModalData={orderModalData}
       onOrderClick={onOrderClick}
       closeOrderModal={closeOrderModal}
-      // onIngredientClick={onIngredientClick}
     />
   );
 };
