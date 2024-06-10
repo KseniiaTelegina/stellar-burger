@@ -7,11 +7,13 @@ import {
 import authReducer from './authSlice';
 import { ingredientsSlice } from './IngredientsSlice';
 import orderReducer from './orderSlice';
+import userReducer from './userSlice'
 
 export const rootReducer = {
   auth: authReducer,
   [ingredientsSlice.name]: ingredientsSlice.reducer,
-  order: orderReducer
+  order: orderReducer,
+  user: userReducer
 };
 
 export const store = configureStore({

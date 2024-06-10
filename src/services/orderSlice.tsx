@@ -24,7 +24,12 @@ const orderSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action: PayloadAction<TConstructorIngredient>) {
-      // Обработка добавления ингредиента
+      const ingredient = action.payload;
+      if (ingredient.type === 'bun') {
+        state.constructorItems.bun = ingredient;
+      } else {
+        state.constructorItems.ingredients.push(ingredient);
+      }
     },
     placeOrderRequest(state) {
       state.orderRequest = true;
@@ -49,4 +54,5 @@ export const {
   placeOrderFailure,
   closeOrderModal
 } = orderSlice.actions;
+
 export default orderSlice.reducer;

@@ -7,7 +7,6 @@ import { useSelector } from '../../services/store';
 import { selectorIngredients } from '../../services/IngredientsSlice';
 
 export const BurgerIngredients: FC = () => {
-  /** TODO: взять переменные из стора */
   const { selectorIngredientsData } = selectorIngredients;
   const ingredients = useSelector(selectorIngredientsData);
   const buns = ingredients.filter((item) => item.type === 'bun');
@@ -64,6 +63,9 @@ export const BurgerIngredients: FC = () => {
       mainsRef={mainsRef}
       saucesRef={saucesRef}
       onTabClick={onTabClick}
+      onIngredientClick={function (id: string): void {
+        throw new Error('Function not implemented.');
+      }}
     />
   );
 };

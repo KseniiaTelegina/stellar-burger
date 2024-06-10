@@ -3,19 +3,10 @@ import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
 import { useSelector } from '../../services/store';
 import { RootState } from '../../services/store';
+// import { useNavigate } from 'react-router-dom';
 
 export const BurgerConstructor: FC = () => {
-  /** TODO: взять переменные constructorItems, orderRequest и orderModalData из стора */
-  // const constructorItems = {
-  //   bun: {
-  //     price: 0
-  //   },
-  //   ingredients: []
-  // };
-
-  // const orderRequest = false;
-
-  // const orderModalData = null;
+  // const navigate = useNavigate();
   const constructorItems = useSelector(
     (state: RootState) => state.order.constructorItems
   );
@@ -41,6 +32,10 @@ export const BurgerConstructor: FC = () => {
     [constructorItems]
   );
 
+  // const onIngredientClick = (id: string) => {
+  //   navigate(`/ingredients/${id}`, { state: { backgroundLocation: location } });
+  // };
+
   return (
     <BurgerConstructorUI
       price={price}
@@ -49,6 +44,19 @@ export const BurgerConstructor: FC = () => {
       orderModalData={orderModalData}
       onOrderClick={onOrderClick}
       closeOrderModal={closeOrderModal}
+      // onIngredientClick={onIngredientClick}
     />
   );
 };
+
+/** TODO: взять переменные constructorItems, orderRequest и orderModalData из стора */
+// const constructorItems = {
+//   bun: {
+//     price: 0
+//   },
+//   ingredients: []
+// };
+
+// const orderRequest = false;
+
+// const orderModalData = null;
