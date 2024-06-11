@@ -28,11 +28,11 @@ import { getIngredients } from '../../services/IngredientsSlice';
 
 const App = () => {
   const location = useLocation();
-  const backgroundLocation = location.state?.backgroundLocation;
+  const background = location.state?.background;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleModalClose = () => {
-    navigate(-1);
+    navigate('./');
   };
 
   useEffect(() => {
@@ -44,9 +44,10 @@ const App = () => {
     // <Router>
     <div className={styles.app}>
       <AppHeader />
-      <Routes location={backgroundLocation || location}>
+      <Routes location={background || location}>
         <Route path='/' element={<ConstructorPage />} />
         <Route path='/feed' element={<Feed />} />
+        <Route path='/ingredients/:id' element={<IngredientDetails />} />
         <Route path='*' element={<NotFound404 />} />
         <Route
           path='/login'
@@ -97,7 +98,7 @@ const App = () => {
           }
         />
       </Routes>
-      {backgroundLocation && (
+      {background && (
         <Routes>
           <Route
             path='/feed/:number'
@@ -110,7 +111,7 @@ const App = () => {
           <Route
             path='/ingredients/:id'
             element={
-              <Modal title='Ingredient Details' onClose={handleModalClose}>
+              <Modal title='Детали ингредиента' onClose={handleModalClose}>
                 <IngredientDetails />
               </Modal>
             }

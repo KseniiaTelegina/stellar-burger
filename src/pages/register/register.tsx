@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { RegisterUI } from '@ui-pages';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../services/userSlice';
-import { AppDispatch } from '../../services/store'; 
+import { AppDispatch } from '../../services/store';
 
 export const Register: FC = () => {
   const [userName, setUserName] = useState('');
@@ -16,13 +16,15 @@ export const Register: FC = () => {
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
-      await dispatch(registerUser({ email, name: userName, password })).unwrap();
+      await dispatch(
+        registerUser({ email, name: userName, password })
+      ).unwrap();
       console.log('Регистрация прошла успешно');
       navigate('/');
     } catch (error) {
       setErrorText('Регистрация не удалась');
       console.error('Ошибка при регистрации', error);
-      }
+    }
   };
 
   return (

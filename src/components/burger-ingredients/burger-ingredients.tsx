@@ -63,9 +63,9 @@ export const BurgerIngredients: FC = () => {
       mainsRef={mainsRef}
       saucesRef={saucesRef}
       onTabClick={onTabClick}
-      onIngredientClick={function (id: string): void {
-        throw new Error('Function not implemented.');
-      }}
+      // onIngredientClick={function (id: string): void {
+      //   throw new Error('Function not implemented.');
+      // }}
     />
   );
 };

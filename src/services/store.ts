@@ -7,7 +7,7 @@ import {
 import authReducer from './authSlice';
 import { ingredientsSlice } from './IngredientsSlice';
 import orderReducer from './orderSlice';
-import userReducer from './userSlice'
+import userReducer from './userSlice';
 
 export const rootReducer = {
   auth: authReducer,

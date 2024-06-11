@@ -5,10 +5,8 @@ import { useSelector } from '../../services/store';
 import { RootState } from '../../services/store';
 
 export const BurgerConstructor: FC = () => {
-
   const constructorItems = useSelector(
     (state: RootState) => state.order.constructorItems
-    
   );
   const orderRequest = useSelector(
     (state: RootState) => state.order.orderRequest
@@ -43,15 +41,3 @@ export const BurgerConstructor: FC = () => {
     />
   );
 };
-
-/** TODO: взять переменные constructorItems, orderRequest и orderModalData из стора */
-// const constructorItems = {
-//   bun: {
-//     price: 0
-//   },
-//   ingredients: []
-// };
-
-// const orderRequest = false;
-
-// const orderModalData = null;

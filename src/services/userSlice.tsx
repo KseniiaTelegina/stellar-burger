@@ -10,7 +10,7 @@ interface UserState {
 const initialState: UserState = {
   name: '',
   email: '',
-  password: '',
+  password: ''
 };
 
 export const registerUser = createAsyncThunk(
@@ -29,16 +29,18 @@ export const loginUser = createAsyncThunk(
   }
 );
 
-
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    updateUser(state, action: PayloadAction<{ name: string; email: string; password: string }>) {
+    updateUser(
+      state,
+      action: PayloadAction<{ name: string; email: string; password: string }>
+    ) {
       state.name = action.payload.name;
       state.email = action.payload.email;
       state.password = action.payload.password;
-    },
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(registerUser.fulfilled, (state, action) => {
@@ -51,10 +53,8 @@ const userSlice = createSlice({
       state.email = action.payload.email;
       state.password = action.payload.password;
     });
-  },
+  }
 });
 
 export const { updateUser } = userSlice.actions;
 export default userSlice.reducer;
-
-
