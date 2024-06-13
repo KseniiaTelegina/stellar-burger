@@ -4,7 +4,7 @@ import {
   useDispatch as dispatchHook,
   useSelector as selectorHook
 } from 'react-redux';
-import { ingredientsSlice } from './IngredientsSlice';
+import { ingredientsSlice } from './ingredientsSlice'; 
 import orderReducer from './orderSlice';
 import { userSlice } from './userSlice';
 
@@ -16,13 +16,6 @@ export const rootReducer = combineReducers({
 
 export const store = configureStore({
   reducer: rootReducer,
-  // middleware: getDefaultMiddleware =>
-  //   getDefaultMiddleware({
-  //     thunk: {
-  //       extraArgument: burgerApi
-  //     }
-  //   })
-  // },
   devTools: process.env.NODE_ENV !== 'production'
 });
 

@@ -23,7 +23,7 @@ import { OrderInfo } from '@components';
 import { IngredientDetails } from '@components';
 import { ProtectedRoute } from '../protected-route/ProtectedRoute';
 import { useDispatch } from '../../services/store';
-import { getIngredients } from '../../services/IngredientsSlice';
+import { getIngredients } from '../../services/ingredientsSlice';
 import { checkUserAuth, userActions } from '../../services/userSlice';
 
 const App = () => {

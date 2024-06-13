@@ -71,7 +71,12 @@ export const ProfileUI: FC<ProfileUIProps> = ({
             >
               Отменить
             </Button>
-            <Button type='primary' size='medium' htmlType='submit' onClick={handleSubmit}>
+            <Button
+              type='primary'
+              size='medium'
+              htmlType='submit'
+              onClick={handleSubmit}
+            >
               Сохранить
             </Button>
           </div>

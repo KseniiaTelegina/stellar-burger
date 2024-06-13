@@ -15,11 +15,11 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
     navigate(userName ? '/profile' : '/login');
   };
   const handleContructorClick = () => {
-    navigate('/')
-  }
+    navigate('/');
+  };
   const handleFeedClick = () => {
-    navigate('/feed')
-  }
+    navigate('/feed');
+  };
 
   return (
     <header className={styles.header}>
@@ -27,13 +27,21 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
         <div className={styles.menu_part_left}>
           <>
             <BurgerIcon type='primary' />
-            <p className='text text_type_main-default ml-2 mr-10' onClick={handleContructorClick}>
+            <p
+              className='text text_type_main-default ml-2 mr-10'
+              onClick={handleContructorClick}
+            >
               Конструктор
             </p>
           </>
           <>
             <ListIcon type='primary' />
-            <p className='text text_type_main-default ml-2' onClick={handleFeedClick}>Лента заказов</p>
+            <p
+              className='text text_type_main-default ml-2'
+              onClick={handleFeedClick}
+            >
+              Лента заказов
+            </p>
           </>
         </div>
         <div className={styles.logo}>

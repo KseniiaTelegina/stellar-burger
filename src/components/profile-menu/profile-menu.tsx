@@ -11,7 +11,5 @@ export const ProfileMenu: FC = () => {
     dispatch(userActions.userLogout());
   };
 
-  // const handleLogout = () => {};
-
   return <ProfileMenuUI handleLogout={handleLogout} pathname={pathname} />;
 };
