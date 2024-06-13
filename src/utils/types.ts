@@ -38,4 +38,8 @@ export type TUser = {
   name: string;
 };
 
+export type UserData = {
+  user: TUser;
+}
+
 export type TTabMode = 'bun' | 'sauce' | 'main';

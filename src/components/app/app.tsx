@@ -23,8 +23,8 @@ import { OrderInfo } from '@components';
 import { IngredientDetails } from '@components';
 import { ProtectedRoute } from '../protected-route/ProtectedRoute';
 import { useDispatch } from '../../services/store';
-import { setAuthChecked } from '../../services/authSlice';
 import { getIngredients } from '../../services/IngredientsSlice';
+import { checkUserAuth, userActions } from '../../services/userSlice';
 
 const App = () => {
   const location = useLocation();
@@ -37,11 +37,10 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getIngredients());
-    dispatch(setAuthChecked());
-  }, []);
+    dispatch(checkUserAuth()).finally(() => dispatch(userActions.authCheck()));
+  }, [dispatch]);
 
   return (
-    // <Router>
     <div className={styles.app}>
       <AppHeader />
       <Routes location={background || location}>
@@ -129,7 +128,6 @@ const App = () => {
         </Routes>
       )}
     </div>
-    // {/* </Router> */}
   );
 };
 

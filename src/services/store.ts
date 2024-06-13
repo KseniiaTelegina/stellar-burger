@@ -1,23 +1,28 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
   TypedUseSelectorHook,
   useDispatch as dispatchHook,
   useSelector as selectorHook
 } from 'react-redux';
-import authReducer from './authSlice';
 import { ingredientsSlice } from './IngredientsSlice';
 import orderReducer from './orderSlice';
-import userReducer from './userSlice';
+import { userSlice } from './userSlice';
 
-export const rootReducer = {
-  auth: authReducer,
+export const rootReducer = combineReducers ({
   [ingredientsSlice.name]: ingredientsSlice.reducer,
+  [userSlice.name]: userSlice.reducer,
   order: orderReducer,
-  user: userReducer
-};
+});
 
 export const store = configureStore({
   reducer: rootReducer,
+  // middleware: getDefaultMiddleware =>
+  //   getDefaultMiddleware({
+  //     thunk: {
+  //       extraArgument: burgerApi
+  //     }
+  //   })
+  // },
   devTools: process.env.NODE_ENV !== 'production'
 });
 
