@@ -1,18 +1,39 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { TConstructorIngredient, TIngredient } from "@utils-types";
+import { orderBurgerApi } from "@api";
+import { TOrder } from "@utils-types"; 
+import { RequestStatus } from "./ingredientsSlice";
 // import type {TConstructorState} 
 
 
 interface TConstructorState {
     bun: TConstructorIngredient | null;
     ingredients: TConstructorIngredient[];
+    // orderRequest: boolean;
+    order: TOrder | null;
+    // orderModalData: any | null;
+    requestStatus: RequestStatus;
   }
 
 const initialState: TConstructorState = {
     bun: null,
-    ingredients: []
+    ingredients: [],
+    // orderRequest: false,
+    order: null,
+    // orderModalData: false,
+    requestStatus: RequestStatus.Idle
 };
+
+type TOrderBurgerArgs = string[];
+
+export const orderBurger = createAsyncThunk<TOrder, TOrderBurgerArgs>(
+    'burgerConstructor/orderBurger',
+    async (ingredientIds) => {
+        const response = await orderBurgerApi(ingredientIds);
+        return response.order;
+    }
+  );
 
 export const burgerConstructorSlice = createSlice({
     name: 'burgerConstructor',
@@ -41,8 +62,24 @@ export const burgerConstructorSlice = createSlice({
             state.ingredients =ingredients;
         },
         resetBurgerConstructor: () => initialState
-    }
-})
+    },
+    extraReducers: (builder) => {
+        builder
+          .addCase(orderBurger.pending, (state) => {
+            state.requestStatus = RequestStatus.Loading;
+          })
+          .addCase(orderBurger.fulfilled, (state, action: PayloadAction<TOrder>) => {
+            state.order = action.payload;
+            state.requestStatus = RequestStatus.Success;
+            state.bun = initialState.bun;
+            state.ingredients = initialState.ingredients;
+        })
+          .addCase(orderBurger.rejected, (state) => {
+            state.requestStatus = RequestStatus.Failed;
+          });
+      },
+    });
+
 
 
 export const BurgerConstructorActions = burgerConstructorSlice.actions;
