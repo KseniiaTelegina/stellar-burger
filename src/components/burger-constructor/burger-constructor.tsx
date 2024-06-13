@@ -5,8 +5,9 @@ import { useSelector } from '../../services/store';
 import { RootState } from '../../services/store';
 
 export const BurgerConstructor: FC = () => {
+
   const constructorItems = useSelector(
-    (state: RootState) => state.order.constructorItems
+    (state: RootState) => state.burgerConstructor
   );
   const orderRequest = useSelector(
     (state: RootState) => state.order.orderRequest

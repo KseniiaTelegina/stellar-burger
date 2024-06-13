@@ -1,31 +1,69 @@
 import React, { FC, memo } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { BurgerIngredientUI } from '@ui';
 import { TBurgerIngredientProps } from './type';
+import { useDispatch } from '../../services/store';
+// import { addToBurgerConstructor } from '../../services/burgerConstructorSlice';
+import { BurgerConstructorActions } from '../../services/burgerConstructorSlice';
 
 export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
   ({ ingredient, count }) => {
     const location = useLocation();
-    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const handleAdd = () => {};
-
-    const handleClick = () => {
-      navigate(`/ingredients/${ingredient._id}`, {
-        state: { background: location }
-      });
+    const handleAdd = () => {
+      dispatch(BurgerConstructorActions.addToBurgerConstructor(ingredient));
+      console.log('ингредиент выбран', ingredient);
     };
 
     return (
-      <div onClick={handleClick}>
         <BurgerIngredientUI
           ingredient={ingredient}
           count={count}
           locationState={{ background: location }}
           handleAdd={handleAdd}
         />
-      </div>
     );
   }
 );
+
+// import React, { FC, memo } from 'react';
+// import { useLocation, useNavigate } from 'react-router-dom';
+
+// import { BurgerIngredientUI } from '@ui';
+// import { TBurgerIngredientProps } from './type';
+// import { useDispatch } from '../../services/store';
+// import { addToBurgerConstructor } from '../../services/burgerConstructorSlice';
+
+// export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
+//   ({ ingredient, count }) => {
+//     const location = useLocation();
+//     const navigate = useNavigate();
+//     const dispatch = useDispatch();
+    
+//     const handleAdd = () => {
+//       e.stopPropagation();  // Остановить всплытие события клика
+//       dispatch(addToBurgerConstructor(ingredient));
+//       console.log('Ингредиент выбран');
+//     };
+
+//     const handleClick = () => {
+//       navigate(`/ingredients/${ingredient._id}`, {
+//         state: { background: location }
+//       });
+//     };
+
+//     return (
+//       <div>
+//         <BurgerIngredientUI
+//           ingredient={ingredient}
+//           count={count}
+//           locationState={{ background: location }}
+//           handleAdd={handleAdd}
+//           handleClick={handleClick}
+//         />
+//       </div>
+//     );
+//   }
+// );
