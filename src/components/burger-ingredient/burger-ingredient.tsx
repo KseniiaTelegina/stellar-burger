@@ -18,12 +18,12 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
     };
 
     return (
-        <BurgerIngredientUI
-          ingredient={ingredient}
-          count={count}
-          locationState={{ background: location }}
-          handleAdd={handleAdd}
-        />
+      <BurgerIngredientUI
+        ingredient={ingredient}
+        count={count}
+        locationState={{ background: location }}
+        handleAdd={handleAdd}
+      />
     );
   }
 );
@@ -41,7 +41,7 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
 //     const location = useLocation();
 //     const navigate = useNavigate();
 //     const dispatch = useDispatch();
-    
+
 //     const handleAdd = () => {
 //       e.stopPropagation();  // Остановить всплытие события клика
 //       dispatch(addToBurgerConstructor(ingredient));

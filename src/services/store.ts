@@ -12,7 +12,7 @@ import { burgerConstructorSlice } from './burgerConstructorSlice';
 export const rootReducer = combineReducers({
   [ingredientsSlice.name]: ingredientsSlice.reducer,
   [userSlice.name]: userSlice.reducer,
-  [burgerConstructorSlice.name]: burgerConstructorSlice.reducer,
+  [burgerConstructorSlice.name]: burgerConstructorSlice.reducer
   // order: orderReducer
 });
 

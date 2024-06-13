@@ -9,25 +9,19 @@ import { useDispatch } from '../../services/store';
 import { BurgerConstructorActions } from '../../services/burgerConstructorSlice';
 import { orderBurger } from '../../services/burgerConstructorSlice';
 import { RequestStatus } from '../../services/ingredientsSlice';
-import { AppDispatch } from '../../services/store';
-
-
 
 export const BurgerConstructor: FC = () => {
-
- 
-
   const navigation = useNavigate();
-  const user = useSelector(userSelectors.getIsAuthChecked);
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useDispatch();
+  const user = useSelector(userSelectors.getUser);
 
   const constructorItems = useSelector(
     (state: RootState) => state.burgerConstructor
   );
 
-  const orderRequest = useSelector(
-    (state: RootState) => state.burgerConstructor.requestStatus
-  ) === RequestStatus.Loading;
+  const orderRequest =
+    useSelector((state: RootState) => state.burgerConstructor.requestStatus) ===
+    RequestStatus.Loading;
 
   const orderModalData = useSelector(
     (state: RootState) => state.burgerConstructor.order
@@ -41,7 +35,7 @@ export const BurgerConstructor: FC = () => {
     } else {
       const ingredientIds = [
         ...constructorItems.ingredients.map((ingredient) => ingredient._id),
-        constructorItems.bun._id,
+        constructorItems.bun._id
       ];
       dispatch(orderBurger(ingredientIds));
     }
