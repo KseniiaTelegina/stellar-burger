@@ -1,4 +1,4 @@
-import { AsyncThunk, UnknownAction } from "@reduxjs/toolkit";
+import { AsyncThunk, UnknownAction } from '@reduxjs/toolkit';
 
 type GenericAsyncThunk = AsyncThunk<unknown, unknown, any>;
 
@@ -6,30 +6,24 @@ export type PendingAction = ReturnType<GenericAsyncThunk['pending']>;
 export type RejectedAction = ReturnType<GenericAsyncThunk['rejected']>;
 export type FulfilleddAction = ReturnType<GenericAsyncThunk['fulfilled']>;
 
-const hasPrefix = (action: UnknownAction, prefix:|string): boolean =>
-    action.type.startsWith(prefix);
+const hasPrefix = (action: UnknownAction, prefix: string): boolean =>
+  action.type.startsWith(prefix);
 
 const isPending = (action: PendingAction): boolean =>
-    action.type.endsWith('/pending');
+  action.type.endsWith('/pending');
 
 const isFulfilled = (action: FulfilleddAction): boolean =>
-    action.type.endsWith('/fulfilled');
+  action.type.endsWith('/fulfilled');
 
 const isRejected = (action: RejectedAction): boolean =>
-    action.type.endsWith('/rejected');
+  action.type.endsWith('/rejected');
 
-export const isActionPending = (prefix: string) =>
-    (action: PendingAction) => {
-        return hasPrefix(action, prefix) && isPending(action);
-    };
+export const isActionPending = (prefix: string) => (action: PendingAction) =>
+  hasPrefix(action, prefix) && isPending(action);
 
-export const isActionRejected = (prefix: string) =>
-    (action: RejectedAction) => {
-        return hasPrefix(action, prefix) && isRejected(action);
-    };
+export const isActionRejected = (prefix: string) => (action: RejectedAction) =>
+  hasPrefix(action, prefix) && isRejected(action);
 
-export const isActionFulfilled = (prefix: string) =>
-    (action: FulfilleddAction) => {
-        return hasPrefix(action, prefix) && isFulfilled(action);
-    };
-
+export const isActionFulfilled =
+  (prefix: string) => (action: FulfilleddAction) =>
+    hasPrefix(action, prefix) && isFulfilled(action);

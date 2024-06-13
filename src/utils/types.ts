@@ -40,6 +40,6 @@ export type TUser = {
 
 export type UserData = {
   user: TUser;
-}
+};
 
 export type TTabMode = 'bun' | 'sauce' | 'main';

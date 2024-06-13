@@ -14,23 +14,28 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
   const handleProfileClick = () => {
     navigate(userName ? '/profile' : '/login');
   };
+  const handleContructorClick = () => {
+    navigate('/')
+  }
+  const handleFeedClick = () => {
+    navigate('/feed')
+  }
 
-  
   return (
     <header className={styles.header}>
       <nav className={`${styles.menu} p-4`}>
         <div className={styles.menu_part_left}>
-        <>
+          <>
             <BurgerIcon type='primary' />
-            <p className='text text_type_main-default ml-2 mr-10'>
+            <p className='text text_type_main-default ml-2 mr-10' onClick={handleContructorClick}>
               Конструктор
             </p>
-            </>
-            <>
+          </>
+          <>
             <ListIcon type='primary' />
-            <p className='text text_type_main-default ml-2'>Лента заказов</p>
-            </>
-            </div>
+            <p className='text text_type_main-default ml-2' onClick={handleFeedClick}>Лента заказов</p>
+          </>
+        </div>
         <div className={styles.logo}>
           <Logo className='' />
         </div>

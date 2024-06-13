@@ -8,10 +8,10 @@ import { ingredientsSlice } from './IngredientsSlice';
 import orderReducer from './orderSlice';
 import { userSlice } from './userSlice';
 
-export const rootReducer = combineReducers ({
+export const rootReducer = combineReducers({
   [ingredientsSlice.name]: ingredientsSlice.reducer,
   [userSlice.name]: userSlice.reducer,
-  order: orderReducer,
+  order: orderReducer
 });
 
 export const store = configureStore({
