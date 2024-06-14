@@ -25,6 +25,10 @@ export const getFeeds = createAsyncThunk<TOrdersData>(
     return response;
   }
 );
+//   export const getFeeds = createAsyncThunk<TOrder[]>(
+//     'feed/getFeeds',
+//     getFeedsApi
+//   );
 
 export const feedSlice = createSlice({
   name: 'feed',
@@ -44,6 +48,10 @@ export const feedSlice = createSlice({
           state.status = RequestStatus.Success;
         }
       )
+    //   .addCase(getFeeds.fulfilled, (state, action) => {
+    //     state.status = RequestStatus.Success;
+    //     state.orders = action.payload;
+    //   })
       .addCase(getFeeds.rejected, (state) => {
         state.status = RequestStatus.Failed;
       });

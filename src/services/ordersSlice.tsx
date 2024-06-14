@@ -13,7 +13,6 @@ interface TOrderState {
     status: RequestStatus.Idle
   };
 
-
   export const getOrders = createAsyncThunk<TOrdersData>(
     'orders/getOrders',
     async () => {
