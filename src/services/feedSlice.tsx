@@ -9,7 +9,6 @@ interface TFeedState {
     orders: TOrder[];
     total: number;
     totalToday: number;
-    // data: TOrdersData[];
     status: RequestStatus;
 }
 
@@ -17,7 +16,6 @@ const initialState: TFeedState = {
     orders: [],
     total: 0,
     totalToday: 0,
-    // data: [],
     status: RequestStatus.Idle
 }
 
