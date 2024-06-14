@@ -31,8 +31,15 @@ const App = () => {
   const background = location.state?.background;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleModalClose = () => {
+  const handleModalIngredientClose = () => {
     navigate('./');
+  };
+  const handleFeedModalClose = () => {
+    navigate('./feed');
+  };
+
+  const handleProfileOrdersModalClose = () => {
+    navigate('./feed');
   };
 
   useEffect(() => {
@@ -102,7 +109,7 @@ const App = () => {
           <Route
             path='/feed/:number'
             element={
-              <Modal title='Order Information' onClose={handleModalClose}>
+              <Modal title='Информация о заказе' onClose={handleFeedModalClose}>
                 <OrderInfo />
               </Modal>
             }
@@ -110,7 +117,10 @@ const App = () => {
           <Route
             path='/ingredients/:id'
             element={
-              <Modal title='Детали ингредиента' onClose={handleModalClose}>
+              <Modal
+                title='Детали ингредиента'
+                onClose={handleModalIngredientClose}
+              >
                 <IngredientDetails />
               </Modal>
             }
@@ -119,7 +129,10 @@ const App = () => {
             path='/profile/orders/:number'
             element={
               <ProtectedRoute onlyUnAuth>
-                <Modal title='Profile Order' onClose={handleModalClose}>
+                <Modal
+                  title='Profile Order'
+                  onClose={handleProfileOrdersModalClose}
+                >
                   <OrderInfo />
                 </Modal>
               </ProtectedRoute>

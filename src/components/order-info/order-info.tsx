@@ -5,8 +5,9 @@ import { TIngredient } from '@utils-types';
 import { RootState, useSelector } from '../../services/store';
 
 export const OrderInfo: FC = () => {
-
-  const orderData = useSelector((state: RootState) => state.feed.orders.find((id) => id))
+  const orderData = useSelector((state: RootState) =>
+    state.feed.orders.find((id) => id)
+  );
   const ingredients = useSelector((state: RootState) => state.ingredients.data);
 
   /* Готовим данные для отображения */
@@ -63,16 +64,15 @@ export const OrderInfo: FC = () => {
 
 // const ingredients = useSelector((state: RootState) => state.ingredients.data);
 
+/** TODO: взять переменные orderData и ingredients из стора */
+// const orderData = {
+//   createdAt: '',
+//   ingredients: [],
+//   _id: '',
+//   status: '',
+//   name: '',
+//   updatedAt: 'string',
+//   number: 0
+// };
 
-  /** TODO: взять переменные orderData и ingredients из стора */
-  // const orderData = {
-  //   createdAt: '',
-  //   ingredients: [],
-  //   _id: '',
-  //   status: '',
-  //   name: '',
-  //   updatedAt: 'string',
-  //   number: 0
-  // };
-
-  // const ingredients: TIngredient[] = [];
+// const ingredients: TIngredient[] = [];

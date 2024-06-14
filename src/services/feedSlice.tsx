@@ -48,10 +48,10 @@ export const feedSlice = createSlice({
           state.status = RequestStatus.Success;
         }
       )
-    //   .addCase(getFeeds.fulfilled, (state, action) => {
-    //     state.status = RequestStatus.Success;
-    //     state.orders = action.payload;
-    //   })
+      //   .addCase(getFeeds.fulfilled, (state, action) => {
+      //     state.status = RequestStatus.Success;
+      //     state.orders = action.payload;
+      //   })
       .addCase(getFeeds.rejected, (state) => {
         state.status = RequestStatus.Failed;
       });
