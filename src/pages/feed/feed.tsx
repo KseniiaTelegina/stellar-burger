@@ -10,8 +10,6 @@ import { getFeeds } from '../../services/feedSlice';
 export const Feed: FC = () => {
   const dispatch = useDispatch();
   const orders = useSelector((state: RootState) => state.feed.orders);
-  // const orders = useSelector((state: RootState) => state.feed.orders);
-  // const status = useSelector((state: RootState) => state.feed.status);
 
   useEffect(() => {
     dispatch(getFeeds());
@@ -23,6 +21,3 @@ export const Feed: FC = () => {
 
   return <FeedUI orders={orders} handleGetFeeds={() => {}} />;
 };
-
-/** TODO: взять переменную из стора */
-// const orders: TOrder[] = [];

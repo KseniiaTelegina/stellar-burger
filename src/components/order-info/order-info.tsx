@@ -58,21 +58,3 @@ export const OrderInfo: FC = () => {
 
   return <OrderInfoUI orderInfo={orderInfo} />;
 };
-// console.log(OrderInfo)
-
-// const orderData = useSelector((state: RootState) => state.feed.orders)
-
-// const ingredients = useSelector((state: RootState) => state.ingredients.data);
-
-/** TODO: взять переменные orderData и ingredients из стора */
-// const orderData = {
-//   createdAt: '',
-//   ingredients: [],
-//   _id: '',
-//   status: '',
-//   name: '',
-//   updatedAt: 'string',
-//   number: 0
-// };
-
-// const ingredients: TIngredient[] = [];

@@ -42,3 +42,6 @@ export const ordersSlice = createSlice({
       });
   }
 });
+
+export const OrdersActions = ordersSlice.actions;
+export default ordersSlice.reducer;
