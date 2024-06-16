@@ -9,9 +9,6 @@ import { useParams } from 'react-router-dom';
 export const OrderInfo: FC = () => {
   const dispatch = useDispatch();
   const { number } = useParams<{ number: string }>(); 
-  // const orderData = useSelector((state: RootState) =>
-  //   state.feed.orders.find((id) => id)
-  // );
   const orderData = useSelector((state: RootState) =>
     state.order.info
   );

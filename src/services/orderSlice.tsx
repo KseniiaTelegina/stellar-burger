@@ -13,13 +13,6 @@ const initialState: TOrderState = {
   status: RequestStatus.Idle
 };
 
-// export const getOrder = createAsyncThunk<TOrder, number>(
-//   'order/getOrder',
-//   async (number: number) => {
-//     const response = await getOrderByNumberApi(number);
-//     return response.orders;
-//   }
-// );
 export const getOrder = createAsyncThunk<TOrder, number>(
     'order/getOrder',
     async (number: number) => {
