@@ -39,7 +39,7 @@ const App = () => {
   };
 
   const handleProfileOrdersModalClose = () => {
-    navigate('./feed');
+    navigate('./profile/orders');
   };
 
   useEffect(() => {
@@ -54,6 +54,8 @@ const App = () => {
         <Route path='/' element={<ConstructorPage />} />
         <Route path='/feed' element={<Feed />} />
         <Route path='/ingredients/:id' element={<IngredientDetails />} />
+        <Route path='/feed/:number' element={<OrderInfo />} />
+        <Route path='/profile/orders/:number' element={<ProtectedRoute><OrderInfo /></ProtectedRoute>} />
         <Route path='*' element={<NotFound404 />} />
         <Route
           path='/login'
@@ -109,7 +111,7 @@ const App = () => {
           <Route
             path='/feed/:number'
             element={
-              <Modal title='Информация о заказе' onClose={handleFeedModalClose}>
+              <Modal title='' onClose={handleFeedModalClose}>
                 <OrderInfo />
               </Modal>
             }
@@ -128,9 +130,9 @@ const App = () => {
           <Route
             path='/profile/orders/:number'
             element={
-              <ProtectedRoute onlyUnAuth>
+              <ProtectedRoute>
                 <Modal
-                  title='Profile Order'
+                  title='История заказов'
                   onClose={handleProfileOrdersModalClose}
                 >
                   <OrderInfo />

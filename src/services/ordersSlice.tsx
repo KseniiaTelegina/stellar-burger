@@ -3,12 +3,12 @@ import { RequestStatus } from './ingredientsSlice';
 import { TOrder, TOrdersData } from '@utils-types';
 import { getOrdersApi } from '@api';
 
-interface TOrderState {
+interface TOrdersState {
   orders: TOrder[];
   status: RequestStatus;
 }
 
-const initialState: TOrderState = {
+const initialState: TOrdersState = {
   orders: [],
   status: RequestStatus.Idle
 };

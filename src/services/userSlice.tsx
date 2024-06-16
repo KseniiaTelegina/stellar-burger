@@ -62,10 +62,14 @@ export const updateUser = createAsyncThunk<TUser, Partial<TRegisterData>>(
 export const logoutUser = createAsyncThunk(
   'user/logoutUser',
   async (_, { dispatch }) => {
-    await logoutApi();
-    localStorage.clear();
-    deleteCookie('accessToken');
-    dispatch(userActions.userLogout());
+    try {
+      await logoutApi();
+      localStorage.clear();
+      deleteCookie('accessToken');
+      dispatch(userActions.userLogout());
+    } catch (error) {
+      console.log('Ошибка выполнения выхода');
+    }
   }
 );
 

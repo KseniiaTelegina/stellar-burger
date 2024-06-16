@@ -9,7 +9,7 @@ export const ProfileOrders: FC = () => {
 
   useEffect(() => {
     dispatch(getOrders());
-  }, [dispatch]);
+  }, [dispatch, orders]);
 
   return <ProfileOrdersUI orders={orders} />;
 };
