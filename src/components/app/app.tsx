@@ -25,6 +25,7 @@ import { ProtectedRoute } from '../protected-route/ProtectedRoute';
 import { useDispatch } from '../../services/store';
 import { getIngredients } from '../../services/ingredientsSlice';
 import { checkUserAuth, userActions } from '../../services/userSlice';
+import { getOrder } from '../../services/orderSlice';
 
 const App = () => {
   const location = useLocation();
@@ -55,7 +56,14 @@ const App = () => {
         <Route path='/feed' element={<Feed />} />
         <Route path='/ingredients/:id' element={<IngredientDetails />} />
         <Route path='/feed/:number' element={<OrderInfo />} />
-        <Route path='/profile/orders/:number' element={<ProtectedRoute><OrderInfo /></ProtectedRoute>} />
+        <Route
+          path='/profile/orders/:number'
+          element={
+            <ProtectedRoute>
+              <OrderInfo />
+            </ProtectedRoute>
+          }
+        />
         <Route path='*' element={<NotFound404 />} />
         <Route
           path='/login'
@@ -111,7 +119,7 @@ const App = () => {
           <Route
             path='/feed/:number'
             element={
-              <Modal title=''  onClose={handleFeedModalClose} >
+              <Modal title={location.state?.number} onClose={handleFeedModalClose}>
                 <OrderInfo />
               </Modal>
             }
@@ -132,7 +140,7 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <Modal
-                  title='История заказов'
+                  title={location.state?.number}
                   onClose={handleProfileOrdersModalClose}
                 >
                   <OrderInfo />

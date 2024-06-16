@@ -40,7 +40,7 @@ export const OrderCard: FC<OrderCardProps> = memo(({ order }) => {
       ingredientsToShow,
       remains,
       total,
-      date,
+      date
     };
   }, [order, ingredients]);
 

@@ -8,10 +8,8 @@ import { useParams } from 'react-router-dom';
 
 export const OrderInfo: FC = () => {
   const dispatch = useDispatch();
-  const { number } = useParams<{ number: string }>(); 
-  const orderData = useSelector((state: RootState) =>
-    state.order.info
-  );
+  const { number } = useParams<{ number: string }>();
+  const orderData = useSelector((state: RootState) => state.order.info);
 
   const ingredients = useSelector((state: RootState) => state.ingredients.data);
 
@@ -20,7 +18,6 @@ export const OrderInfo: FC = () => {
       dispatch(getOrder(parseInt(number)));
     }
   }, [dispatch, number]);
-
 
   /* Готовим данные для отображения */
   const orderInfo = useMemo(() => {
