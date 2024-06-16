@@ -66,4 +66,12 @@ export const OrderInfo: FC = () => {
   }
 
   return <OrderInfoUI orderInfo={orderInfo} />;
+  // return (
+  //   <div>
+  //     <h1>Order Info</h1>
+  //     <p>Order Number: {orderInfo.number}</p>
+  //     <p>Status: {orderInfo.status}</p>
+  //     <OrderInfoUI orderInfo={orderInfo} /> {/* Тут рендерим основные детали заказа */}
+  //   </div>
+  // );
 };

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useMatch } from 'react-router-dom';
 import { ConstructorPage } from '@pages';
 import { Feed } from '@pages';
 import { NotFound404 } from '@pages';
@@ -43,6 +43,10 @@ const App = () => {
     navigate('./profile/orders');
   };
 
+  const profileMatch = useMatch('/profile/orders/:number')?.params.number;
+  const feedMatch = useMatch('/feed/:number')?.params.number;
+  const orderNumber = profileMatch || feedMatch;
+
   useEffect(() => {
     dispatch(getIngredients());
     dispatch(checkUserAuth()).finally(() => dispatch(userActions.authCheck()));
@@ -55,12 +59,31 @@ const App = () => {
         <Route path='/' element={<ConstructorPage />} />
         <Route path='/feed' element={<Feed />} />
         <Route path='/ingredients/:id' element={<IngredientDetails />} />
-        <Route path='/feed/:number' element={<OrderInfo />} />
+        <Route
+          path='/feed/:number'
+          element={
+            <div className={styles.detailPageWrap}>
+              <p
+                className={`text text_type_digits-default ${styles.detailHeader}`}
+              >
+                #${orderNumber && orderNumber.padStart(6, '0')}
+              </p>
+              <OrderInfo />
+            </div>
+          }
+        />
         <Route
           path='/profile/orders/:number'
           element={
             <ProtectedRoute>
-              <OrderInfo />
+              <div className={styles.detailPageWrap}>
+                <p
+                  className={`text text_type_digits-default ${styles.detailHeader}`}
+                >
+                  #${orderNumber && orderNumber.padStart(6, '0')}
+                </p>
+                <OrderInfo />
+              </div>
             </ProtectedRoute>
           }
         />
@@ -119,7 +142,10 @@ const App = () => {
           <Route
             path='/feed/:number'
             element={
-              <Modal title={location.state?.number} onClose={handleFeedModalClose}>
+              <Modal
+                title={`#${orderNumber && orderNumber.padStart(6, '0')}`}
+                onClose={handleFeedModalClose}
+              >
                 <OrderInfo />
               </Modal>
             }
@@ -140,7 +166,7 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <Modal
-                  title={location.state?.number}
+                  title={`#${orderNumber && orderNumber.padStart(6, '0')}`}
                   onClose={handleProfileOrdersModalClose}
                 >
                   <OrderInfo />

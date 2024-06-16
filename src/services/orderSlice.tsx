@@ -17,12 +17,13 @@ export const getOrder = createAsyncThunk<TOrder, number>(
   'order/getOrder',
   async (number: number) => {
     const response = await getOrderByNumberApi(number);
-    if (response && response.success && response.orders.length > 0) {
-      return response.orders[0];
-    } else {
-      throw new Error('Заказ не найден');
-    }
+    // if (response && response.success && response.orders.length > 0) {
+    return response.orders[0];
   }
+  //     else {
+  //       throw new Error('Заказ не найден');
+  //     }
+  //   }
 );
 
 export const orderSlice = createSlice({
