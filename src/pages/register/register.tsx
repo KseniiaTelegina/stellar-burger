@@ -19,7 +19,6 @@ export const Register: FC = () => {
       await dispatch(
         registerUser({ email, name: userName, password })
       ).unwrap();
-      console.log('Регистрация прошла успешно');
       navigate('/');
     } catch (error) {
       setErrorText('Регистрация не удалась');

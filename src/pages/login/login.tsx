@@ -16,10 +16,8 @@ export const Login: FC = () => {
     e.preventDefault();
     try {
       await dispatch(loginUser({ email, password })).unwrap();
-      console.log('Авторизация прошла успешно');
       navigate('/');
     } catch (error) {
-      console.error('Ошибка при авторизации', error);
       setErrorText('Ошибка при авторизации: ' + (error as Error).message);
     }
   };
