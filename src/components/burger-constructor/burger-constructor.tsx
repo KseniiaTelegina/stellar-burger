@@ -8,7 +8,7 @@ import { userSelectors } from '../../services/userSlice';
 import { useDispatch } from '../../services/store';
 import { BurgerConstructorActions } from '../../services/burgerConstructorSlice';
 import { orderBurger } from '../../services/burgerConstructorSlice';
-import { RequestStatus } from '../../services/ingredientsSlice';
+import { RequestStatus } from '@utils-types';
 
 export const BurgerConstructor: FC = () => {
   const navigation = useNavigate();

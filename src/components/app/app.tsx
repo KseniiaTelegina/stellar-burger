@@ -17,7 +17,7 @@ import {
   Route,
   useNavigate
 } from 'react-router-dom';
-import { AppHeader } from '@components';
+import { AppHeader, OrderStatus } from '@components';
 import { Modal } from '@components';
 import { OrderInfo } from '@components';
 import { IngredientDetails } from '@components';
@@ -25,7 +25,6 @@ import { ProtectedRoute } from '../protected-route/ProtectedRoute';
 import { useDispatch } from '../../services/store';
 import { getIngredients } from '../../services/ingredientsSlice';
 import { checkUserAuth, userActions } from '../../services/userSlice';
-import { getOrder } from '../../services/orderSlice';
 
 const App = () => {
   const location = useLocation();
@@ -43,9 +42,9 @@ const App = () => {
     navigate('./profile/orders');
   };
 
-  const profileMatch = useMatch('/profile/orders/:number')?.params.number;
-  const feedMatch = useMatch('/feed/:number')?.params.number;
-  const orderNumber = profileMatch || feedMatch;
+  const profileOrderMatch = useMatch('/profile/orders/:number')?.params.number;
+  const feedOrderMatch = useMatch('/feed/:number')?.params.number;
+  const orderNumber = profileOrderMatch || feedOrderMatch;
 
   useEffect(() => {
     dispatch(getIngredients());
@@ -68,6 +67,7 @@ const App = () => {
               >
                 #${orderNumber && orderNumber.padStart(6, '0')}
               </p>
+              {/* <OrderStatus status={orderInfo && orderInfo.status} /> */}
               <OrderInfo />
             </div>
           }

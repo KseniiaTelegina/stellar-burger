@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { RequestStatus } from './ingredientsSlice';
-import { TOrder, TOrdersData } from '@utils-types';
+import { TOrder, RequestStatus } from '@utils-types';
 import { getOrderByNumberApi } from '@api';
 
 interface TOrderState {
@@ -17,13 +16,8 @@ export const getOrder = createAsyncThunk<TOrder, number>(
   'order/getOrder',
   async (number: number) => {
     const response = await getOrderByNumberApi(number);
-    // if (response && response.success && response.orders.length > 0) {
     return response.orders[0];
   }
-  //     else {
-  //       throw new Error('Заказ не найден');
-  //     }
-  //   }
 );
 
 export const orderSlice = createSlice({

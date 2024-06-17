@@ -4,14 +4,13 @@ import {
   loginUserApi,
   getUserApi,
   logoutApi,
-  updateUserApi
+  updateUserApi,
+  TRegisterData
 } from '@api';
-import { RequestStatus } from './ingredientsSlice';
 import { setCookie } from '../utils/cookie';
 import { isActionPending, isActionRejected } from '../utils/redux';
 import { deleteCookie } from '../utils/cookie';
-import { TUser } from '@utils-types';
-import { TRegisterData } from '@api';
+import { TUser, RequestStatus } from '@utils-types';
 
 interface TUserState {
   isAuthChecked: boolean;

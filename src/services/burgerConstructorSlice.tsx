@@ -2,8 +2,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { TConstructorIngredient, TIngredient } from '@utils-types';
 import { orderBurgerApi } from '@api';
-import { TOrder } from '@utils-types';
-import { RequestStatus } from './ingredientsSlice';
+import { TOrder, RequestStatus } from '@utils-types';
 
 interface TConstructorState {
   bun: TConstructorIngredient | null;

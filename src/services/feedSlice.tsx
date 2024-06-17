@@ -1,5 +1,4 @@
-import { RequestStatus } from './ingredientsSlice';
-import { TOrder, TOrdersData } from '@utils-types';
+import { TOrder, TOrdersData, RequestStatus } from '@utils-types';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getFeedsApi } from '@api';
 import type { PayloadAction } from '@reduxjs/toolkit';

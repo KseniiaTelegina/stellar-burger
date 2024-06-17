@@ -10,7 +10,6 @@ export const OrderInfo: FC = () => {
   const dispatch = useDispatch();
   const { number } = useParams<{ number: string }>();
   const orderData = useSelector((state: RootState) => state.order.info);
-
   const ingredients = useSelector((state: RootState) => state.ingredients.data);
 
   useEffect(() => {
@@ -66,12 +65,4 @@ export const OrderInfo: FC = () => {
   }
 
   return <OrderInfoUI orderInfo={orderInfo} />;
-  // return (
-  //   <div>
-  //     <h1>Order Info</h1>
-  //     <p>Order Number: {orderInfo.number}</p>
-  //     <p>Status: {orderInfo.status}</p>
-  //     <OrderInfoUI orderInfo={orderInfo} /> {/* Тут рендерим основные детали заказа */}
-  //   </div>
-  // );
 };
