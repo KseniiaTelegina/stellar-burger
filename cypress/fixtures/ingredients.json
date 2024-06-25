@@ -2,7 +2,7 @@
     "success": true,
     "data": [
         {
-            "_id": "643d69a5c3f7b9001cfa093c",
+            "_id": "1",
             "name": "Краторная булка N-200i",
             "type": "bun",
             "proteins": 80,
@@ -15,7 +15,7 @@
             "image_mobile": "https://code.s3.yandex.net/react/code/bun-02-large.png"
         },
         {
-            "_id": "643d69a5c3f7b9001cfa0941",
+            "_id": "2",
             "name": "Биокотлета из марсианской Магнолии",
             "type": "main",
             "proteins": 420,
@@ -28,7 +28,7 @@
             "image_mobile": "https://code.s3.yandex.net/react/code/meat-01-large.png"
         },
         {
-            "_id": "643d69a5c3f7b9001cfa0942",
+            "_id": "3",
             "name": "Соус Spicy-X",
             "type": "sauce",
             "proteins": 30,
