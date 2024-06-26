@@ -66,8 +66,8 @@ describe('Страница конструктора бургера', () => {
           // cy.get('[data-cy="modal"]').should('be.visible');
      
          // Закрыть модальное окно по клику на оверлей //настроить
-        //   cy.get('[data-cy="modal-overlay"]').click();
-        //   cy.get('[data-cy="modal"]').should('not.exist');
+          cy.get('[data-cy="modal-overlay"]').click();
+          cy.get('[data-cy="modal"]').should('not.exist');
         });
 
 
