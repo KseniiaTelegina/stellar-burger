@@ -16,7 +16,7 @@ export const BurgerConstructorElementUI: FC<BurgerConstructorElementUIProps> =
     }) => (
       <li
         className={`${styles.element} mb-4 mr-2`}
-        data-cy={`constructor-element-${ingredient._id}`}
+        data-cy={'constructor-topping'}
       >
         <MoveButton
           handleMoveDown={handleMoveDown}
