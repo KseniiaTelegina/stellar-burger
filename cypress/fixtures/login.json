@@ -1,9 +1,0 @@
-{
-    "success": true,
-    "accessToken": "Bearer 123",
-    "refreshToken": "2cee36f914fbe082a8db12bf0396e78c9a37c10681924412d884819ad722defcc471067647da6e5b",
-    "user": {
-        "email": "ksusha2993@gmail.com",
-        "name": "Ксения"
-    }
-}
