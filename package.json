@@ -98,7 +98,8 @@
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier ./src --write",
     "cypress:open": "cypress open",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "eslintConfig": {
     "extends": [
@@ -114,6 +115,13 @@
       "^@utils-types": "<rootDir>/src/utils/types",
       "^@api": "<rootDir>/src/utils/burger-api.ts",
       "^@slices": "<rootDir>/src/services/slices"
-    }
+    },
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx,ts,tsx}",
+    "!src/**/*.d.ts"
+  ],
+  "coverageDirectory": "coverage",
+  "coverageReporters": ["text", "lcov"]
   }
 }
