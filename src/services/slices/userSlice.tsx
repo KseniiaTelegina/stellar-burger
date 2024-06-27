@@ -7,9 +7,9 @@ import {
   updateUserApi,
   TRegisterData
 } from '@api';
-import { setCookie } from '../utils/cookie';
-import { isActionPending, isActionRejected } from '../utils/redux';
-import { deleteCookie } from '../utils/cookie';
+import { setCookie } from '../../utils/cookie';
+import { isActionPending, isActionRejected } from '../../utils/redux';
+import { deleteCookie } from '../../utils/cookie';
 import { TUser, RequestStatus } from '@utils-types';
 
 interface TUserState {

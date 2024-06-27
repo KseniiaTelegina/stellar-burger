@@ -58,17 +58,26 @@ describe('Страница конструктора бургера', () => {
     cy.visit('http://localhost:4000');
     cy.wait('@getIngredients');
           
-    // // Кликнуть на ингредиент для открытия модального окна
+    //Кликнуть на ингредиент для открытия модального окна
     cy.get('[data-cy="ingredient-item-1"]').click();
     cy.get('[data-cy="modal"]').should('be.visible');
           
     // Закрыть модальное окно по клику на крестик
     cy.get('[data-cy="modal-close-btn"]').click();
     cy.get('[data-cy="modal"]').should('not.exist');
+  });
 
-    // Закрыть модальное окно по клику на оверлей //настроить
-      // cy.get('[data-cy="modal-overlay"]').click();
-      // cy.get('[data-cy="modal-overlay"]').should('not.exist');
+  it('закрывать модальное окно ингредиента по клику на оверлей', () => {
+    cy.visit('http://localhost:4000');
+    cy.wait('@getIngredients');
+          
+    //Кликнуть на ингредиент для открытия модального окна
+    cy.get('[data-cy="ingredient-item-2"]').click();
+    cy.get('[data-cy="modal"]').should('be.visible');
+
+    // Закрыть модальное окно по клику на оверлей
+      cy.get('[data-cy="modal-overlay"]').click('topRight', { force: true });
+      cy.get('[data-cy="modal"]').should('not.exist');
   });
 
   it('создание заказа', () => {
