@@ -7,7 +7,7 @@ type TIngredientState = {
   status: RequestStatus;
 };
 
-const initialState: TIngredientState = {
+export const initialState: TIngredientState = {
   data: [],
   status: RequestStatus.Idle
 };

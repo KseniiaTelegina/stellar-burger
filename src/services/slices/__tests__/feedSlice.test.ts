@@ -1,22 +1,8 @@
 import feedReducer, {
-  getFeeds,
+  getFeeds, initialState
 } from '../feedSlice';
 
-import { TOrder, TOrdersData, RequestStatus } from '@utils-types';
-
-interface TFeedState {
-    orders: TOrder[];
-    total: number;
-    totalToday: number;
-    status: RequestStatus;
-  }
-
-const initialState: TFeedState = {
-  orders: [],
-  total: 0,
-  totalToday: 0,
-  status: RequestStatus.Idle
-};
+import { TOrdersData, RequestStatus } from '@utils-types';
 
 describe('feedSlice', () => {
   const orderData: TOrdersData = {

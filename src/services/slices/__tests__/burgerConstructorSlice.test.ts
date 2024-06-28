@@ -1,21 +1,7 @@
 import burgerConstructorReducer, {
-  BurgerConstructorActions
+  BurgerConstructorActions, TConstructorState, initialState
 } from '../burgerConstructorSlice';
-import { TConstructorIngredient, TIngredient, TOrder, RequestStatus } from '@utils-types';
-
-interface TConstructorState {
-    bun: TConstructorIngredient | null;
-    ingredients: TConstructorIngredient[];
-    order: TOrder | null;
-    requestStatus: RequestStatus;
-  }
-
-const initialState: TConstructorState = {
-  bun: null,
-  ingredients: [],
-  order: null,
-  requestStatus: RequestStatus.Idle
-};
+import { TConstructorIngredient, TIngredient } from '@utils-types';
 
 describe('burgerConstructorSlice', () => {
 

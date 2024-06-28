@@ -1,17 +1,7 @@
 import { configureStore} from '@reduxjs/toolkit';
-import orderReducer, { getOrders } from '../ordersSlice';
+import orderReducer, { getOrders, initialState } from '../ordersSlice';
 import { RequestStatus, TOrder } from '@utils-types';
 import { getOrdersApi } from '@api';
-
-interface TOrdersState {
-    orders: TOrder[];
-    status: RequestStatus;
-  }
-  
-  const initialState: TOrdersState = {
-    orders: [],
-    status: RequestStatus.Idle
-  };
 
 jest.mock('@api', () => ({
     getOrdersApi: jest.fn()

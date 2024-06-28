@@ -4,7 +4,8 @@ import userReducer, {
     checkUserAuth,
     updateUser,
     logoutUser,
-    userActions
+    userActions,
+    initialState
   } from '../userSlice'; 
 import { RequestStatus, TUser } from '@utils-types';
   
@@ -16,19 +17,14 @@ jest.mock('@api', () => ({
   updateUserApi: jest.fn()
 }));
   
-interface TUserState {
-  isAuthChecked: boolean;
-  data: TUser | null;
-  requestStatus: RequestStatus;
-}
-  
 describe('userSlice reducer', () => {
-  const initialState: TUserState = {
-    isAuthChecked: false,
-    data: null,
-    requestStatus: RequestStatus.Idle,
-  };
-  
+
+  const testUser = { name: 'Ксения', email: 'ksusha2993@gmail.com', password: 'password' };
+  const updatedUser = { name: 'Updated User', email: 'updated@example.com', password: 'updated-password' };
+  const userData = { name: 'Test', email: 'test@example.com', password: 'password123' };
+  const loginData = { email: 'test@example.com', password: 'password123' };
+  const updateNameUserData = { name: 'Updated Name' };
+
   test('начальное состояние', () => {
     expect(userReducer(undefined, { type: 'unknown' })).toEqual(initialState);
   });
@@ -39,17 +35,15 @@ describe('userSlice reducer', () => {
   });
   
   test('обработка userLogout', () => {
-    const stateWithData = { ...initialState, data: { name: 'Ксения', email: 'ksusha2993@gmail.com', password: 'password' } }; 
+    const stateWithData = { ...initialState, testUser };
     const actual = userReducer(stateWithData, userActions.userLogout());
     expect(actual.data).toEqual(null);
   });
   
   describe('Асинхронные действия', () => {
-    const testUser: TUser = { name: 'Ксения', email: 'ksusha2993@gmail.com', password: 'password' };
-    const updatedUser: TUser = { name: 'Updated User', email: 'updated@example.com', password: 'updated-password' };
-  
+
     test('обработка registerUser.fulfilled', () => {
-      const actual = userReducer(initialState, registerUser.fulfilled(testUser, '', { name: 'Ксения', email: 'ksusha2993@gmail.com', password: 'password' }));
+      const actual = userReducer(initialState, registerUser.fulfilled(testUser, '', testUser));
       expect(actual.data).toEqual(testUser);
       expect(actual.requestStatus).toBe(RequestStatus.Success);
     });
@@ -57,13 +51,13 @@ describe('userSlice reducer', () => {
     test('обработка registerUser.pending', () => {
       const actual = userReducer(
         initialState, 
-        registerUser.pending('', { name: 'Test', email: 'test@example.com', password: 'password123' })
+        registerUser.pending('', userData)
       );
       expect(actual.requestStatus).toBe(RequestStatus.Loading);
     });
   
     test('обработка registerUser.rejected', () => {
-      const actual = userReducer(initialState, registerUser.rejected(new Error('Ошибка регистрации'), '', { name: 'Test', email: 'test@example.com', password: 'password123' }));
+      const actual = userReducer(initialState, registerUser.rejected(new Error('Ошибка регистрации'), '', userData));
       expect(actual.requestStatus).toBe(RequestStatus.Failed);
     });
   
@@ -74,12 +68,12 @@ describe('userSlice reducer', () => {
     });
   
     test('обработка loginUser.pending', () => {
-      const actual = userReducer(initialState, loginUser.pending('', { email: 'test@example.com', password: 'password123' }));
+      const actual = userReducer(initialState, loginUser.pending('', loginData));
       expect(actual.requestStatus).toBe(RequestStatus.Loading);
     });
   
     test('обработка loginUser.rejected', () => {
-      const actual = userReducer(initialState, loginUser.rejected(new Error('Ошибка входа'), '', { email: 'test@example.com', password: 'password123' }));
+      const actual = userReducer(initialState, loginUser.rejected(new Error('Ошибка входа'), '', loginData));
       expect(actual.requestStatus).toBe(RequestStatus.Failed);
     });
   
@@ -101,18 +95,18 @@ describe('userSlice reducer', () => {
 
     test('обработка updateUser.fulfilled', () => {
       const stateWithData = { ...initialState, data: testUser };
-      const actual = userReducer(stateWithData, updateUser.fulfilled(updatedUser, '', { name: 'Updated User', email: 'updated@example.com', password: 'updated-password'  }));
+      const actual = userReducer(stateWithData, updateUser.fulfilled(updatedUser, '', userData));
       expect(actual.data).toEqual(updatedUser);
       expect(actual.requestStatus).toBe(RequestStatus.Success);
     });
 
     test('обработка updateUser.pending', () => {
-      const actual = userReducer(initialState, updateUser.pending('', { name: 'Updated Name' }));
+      const actual = userReducer(initialState, updateUser.pending('', updateNameUserData));
       expect(actual.requestStatus).toBe(RequestStatus.Loading);
     });
 
     test('обработка updateUser.rejected', () => {
-      const actual = userReducer(initialState, updateUser.rejected(new Error('Ошибка обновления пользователя'), '', { name: 'Updated Name' }));
+      const actual = userReducer(initialState, updateUser.rejected(new Error('Ошибка обновления пользователя'), '', updateNameUserData));
       expect(actual.requestStatus).toBe(RequestStatus.Failed);
     });
 
